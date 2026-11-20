@@ -48,6 +48,8 @@ void Process_BLE_UART_Data(char BLE_UART_Buffer[])
 int main(void)
 {
 
+/*
+ //Initial main function from lab
     DisableInterrupts();
     Clock_Init48MHz();
     LED2_Init();
@@ -76,4 +78,38 @@ int main(void)
         Process_BLE_UART_Data(BLE_UART_Buffer);
 
     }
+
+ */
+
+    //6.1A fixed Byte Transmission
+    DisableInterrupts();
+    Clock_Init48MHz();
+    EUSCI_A0_Init_printf();
+    BLE_UART_Buffer[BLE_UART_BUFFER_SIZE] = {0};
+    EnableInterrupts();
+
+    while(1)
+    {
+        BLE_UART_OutChar(0xAA);
+        Process_BLE_UART_Data(BLE_UART_Buffer);
+        BLE_UART_OutChar(0x55);
+        Process_BLE_UART_Data(BLE_UART_Buffer);
+        BLE_UART_OutChar(0xFF);
+        Process_BLE_UART_Data(BLE_UART_Buffer);
+        BLE_UART_OutChar(0x00);
+        Process_BLE_UART_Data(BLE_UART_Buffer);
+    }
+/*
+    //6.1B UART Transmission Using PMOD SWT
+    while(1)
+    {
+
+    }
+
+    //6.2 BLE Controller
+    while(1)
+    {
+
+    }
+ */
 }
