@@ -49,7 +49,7 @@ void BLE_UART_Reset();
 
 #define BLE_UART_BUFFER_SIZE 128
 
-#define Cr 0x0D
+#define CR 0x0D
 
 #define LF 0x0A
 
