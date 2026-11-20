@@ -16,7 +16,18 @@
  *
  */
 
+#include <stdint.h>
+#include<math.h>
 #include "msp.h"
+
+#include "inc/Clock.h"
+#include "inc/CortexM.h"
+#include "inc/GPIO.h"
+#include "inc/EUSCI_A0_UART.h"
+#include "inc/Motor.h"
+#include "inc/BLE_UART.h"
+
+#define PWM_NOMINAL 3000
 
 int main(void)
 {
